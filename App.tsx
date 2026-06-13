@@ -1,5 +1,5 @@
 // App.tsx
-
+import { Picker } from '@react-native-picker/picker';
 import React, { useState } from 'react';
 
 import {
@@ -148,56 +148,39 @@ export default function App() {
 
         {/* COURSE */}
 
-        <Text style={styles.label}>
-          Select Course
-        </Text>
+       <Text style={styles.label}>
+  Select Course
+</Text>
 
-        <View style={styles.courseContainer}>
+<View style={styles.pickerContainer}>
 
-          {/* STARTER */}
+  <Picker
+    selectedValue={course}
+    onValueChange={(itemValue) => setCourse(itemValue)}
+  >
+    <Picker.Item
+      label="Choose a course..."
+      value=""
+    />
 
-          <TouchableOpacity
-            style={[
-              styles.courseButton,
-              course === 'Starter' && styles.selectedButton
-            ]}
-            onPress={() => setCourse('Starter')}
-          >
-            <Text style={styles.buttonText}>
-              Starter
-            </Text>
-          </TouchableOpacity>
+    <Picker.Item
+      label="Starter"
+      value="Starter"
+    />
 
-          {/* MAIN */}
+    <Picker.Item
+      label="Main"
+      value="Main"
+    />
 
-          <TouchableOpacity
-            style={[
-              styles.courseButton,
-              course === 'Main' && styles.selectedButton
-            ]}
-            onPress={() => setCourse('Main')}
-          >
-            <Text style={styles.buttonText}>
-              Main
-            </Text>
-          </TouchableOpacity>
+    <Picker.Item
+      label="Dessert"
+      value="Dessert"
+    />
 
-          {/* DESSERT */}
+  </Picker>
 
-          <TouchableOpacity
-            style={[
-              styles.courseButton,
-              course === 'Dessert' && styles.selectedButton
-            ]}
-            onPress={() => setCourse('Dessert')}
-          >
-            <Text style={styles.buttonText}>
-              Dessert
-            </Text>
-          </TouchableOpacity>
-
-        </View>
-
+</View>
         {/* ADD BUTTON */}
 
         <TouchableOpacity
@@ -288,19 +271,26 @@ export default function App() {
 
 const styles = StyleSheet.create({
 
-  container: {
-    flex: 1,
-    backgroundColor: '#f2f2f2',
-    padding: 20,
-  },
+  pickerContainer: {
+  backgroundColor: '#fff',
+  borderWidth: 1,
+  borderColor: '#d1d1d1',
+  borderRadius: 14,
+  marginBottom: 20,
+},
+container: {
+  flex: 1,
+  backgroundColor: '#FAFAFA',
+  padding: 20,
+},
 
   title: {
-    fontSize: 34,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 30,
-    color: '#111',
-  },
+  fontSize: 34,
+  fontWeight: 'bold',
+  textAlign: 'center',
+  marginBottom: 30,
+  color: '#2E7D32',
+},
 
   label: {
     fontSize: 20,
@@ -346,13 +336,13 @@ const styles = StyleSheet.create({
   },
 
   addButton: {
-    backgroundColor: '#000',
-    padding: 18,
-    borderRadius: 14,
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 25,
-  },
+  backgroundColor: '#2E7D32',
+  padding: 18,
+  borderRadius: 14,
+  alignItems: 'center',
+  marginTop: 10,
+  marginBottom: 25,
+},
 
   addButtonText: {
     color: '#fff',
@@ -382,11 +372,13 @@ const styles = StyleSheet.create({
   },
 
   menuCard: {
-    backgroundColor: '#ffffff',
-    padding: 20,
-    borderRadius: 16,
-    marginBottom: 18,
-  },
+  backgroundColor: '#ffffff',
+  padding: 20,
+  borderRadius: 16,
+  marginBottom: 18,
+  borderLeftWidth: 6,
+  borderLeftColor: '#2E7D32',
+},
 
   menuTitle: {
     fontSize: 28,
@@ -402,12 +394,12 @@ const styles = StyleSheet.create({
   },
 
   deleteButton: {
-    backgroundColor: 'red',
-    marginTop: 15,
-    padding: 12,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
+  backgroundColor: '#C62828',
+  marginTop: 15,
+  padding: 12,
+  borderRadius: 10,
+  alignItems: 'center',
+},
 
   deleteText: {
     color: 'white',
